@@ -1,2 +1,2 @@
 # kalkulator-persen
-preview kalkulator-persen.afkar.site
+preview https://kalkulator-persen.afkar.site
