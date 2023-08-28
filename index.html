@@ -7,10 +7,10 @@
     <h1>Kalkulator Persentase Kenaikan</h1>
 
     <label for="nilaiAwal">Nilai Awal:</label><br>
-    <input type="text" id="nilaiAwal" inputmode="numeric"><br>
+    <input type="text" id="nilaiAwal" inputmode="numeric" pattern="[0-9,.]*"><br>
 
     <label for="nilaiAkhir">Nilai Akhir:</label><br>
-    <input type="text" id="nilaiAkhir" inputmode="numeric"><br>
+    <input type="text" id="nilaiAkhir" inputmode="numeric" pattern="[0-9,.]*"><br>
 
     <br>
     <button onclick="hitungPersentase()">Hitung</button><br>
@@ -21,8 +21,8 @@
 
     <script>
         function hitungPersentase() {
-            var nilaiAwal = parseFloat(document.getElementById("nilaiAwal").value);
-            var nilaiAkhir = parseFloat(document.getElementById("nilaiAkhir").value);
+            var nilaiAwal = parseFloat(document.getElementById("nilaiAwal").value.replace(/\./g, '').replace(/,/g, '.'));
+            var nilaiAkhir = parseFloat(document.getElementById("nilaiAkhir").value.replace(/\./g, '').replace(/,/g, '.'));
 
             var persentaseKenaikan = ((nilaiAkhir - nilaiAwal) / nilaiAwal) * 100;
 
