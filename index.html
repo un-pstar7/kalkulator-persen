@@ -55,5 +55,23 @@
             document.getElementById("totalValue").value = totalValue.toLocaleString('id-ID');
         }
     </script>
+
+    <h1>Kalkulator Kerugian dan Keuntungan Saham</h1>
+    <form>
+        <label for="kerugian">Kerugian yang dialami (%):</label>
+        <input type="number" id="kerugian" step="0.01" required><br>
+        <button type="button" onclick="hitungPersentase()">Hitung</button>
+    </form>
+    <label for="hasil">Persentase yang harus dikembalikan:</label>
+    <input type="text" id="hasil" readonly>
+
+    <script>
+        function hitungPersentase() {
+            var kerugian = document.getElementById("kerugian").value;
+            var persentase = (kerugian / (100 - kerugian)) * 100;
+
+            document.getElementById("hasil").value = persentase.toFixed(2) + "%";
+        }
+    </script>
 </body>
 </html>
