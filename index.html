@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kalkulator Kerugian dan Keuntungan Saham</title>
+</head>
+<body>
+    <h1>Kalkulator Kerugian dan Keuntungan Saham</h1>
+
+    <label for="kerugian">Kerugian yang dialami (%):</label>
+    <input type="number" id="kerugian" step="0.01" required><br>
+
+    <button type="button" onclick="hitungPersentase()">Hitung</button><br>
+
+    <label for="hasil">Persentase yang harus dikembalikan:</label>
+    <input type="text" id="hasil" readonly>
+
+    <script>
+        function hitungPersentase() {
+            var kerugian = document.getElementById("kerugian").value;
+            var persentase = (kerugian / (100 - kerugian)) * 100;
+
+            document.getElementById("hasil").value = persentase.toFixed(2) + "%";
+        }
+    </script>
+
+    <h1>Kalkulator Persentase Kenaikan</h1>
+
+    <label for="nilaiAwal">Nilai Awal:</label><br>
+    <input type="text" id="nilaiAwal" inputmode="numeric" pattern="[0-9,.]*"><br>
+
+    <label for="nilaiAkhir">Nilai Akhir:</label><br>
+    <input type="text" id="nilaiAkhir" inputmode="numeric" pattern="[0-9,.]*"><br>
+
+    <br>
+    <button onclick="hitungPersentase()">Hitung</button><br>
+
+    <br>
+    <label for="hasil">Hasil (%):</label><br>
+    <input type="text" id="hasil" readonly><br>
+
+    <script>
+        function hitungPersentase() {
+            var nilaiAwal = parseFloat(document.getElementById("nilaiAwal").value.replace(/\./g, '').replace(/,/g, '.'));
+            var nilaiAkhir = parseFloat(document.getElementById("nilaiAkhir").value.replace(/\./g, '').replace(/,/g, '.'));
+
+            var persentaseKenaikan = ((nilaiAkhir - nilaiAwal) / nilaiAwal) * 100;
+
+            document.getElementById("hasil").value = persentaseKenaikan.toFixed(2).replace(/\./g, ",");
+        }
+    </script>
+
+    <h1>Kalkulator Keuntungan</h1>
+
+    <label for="initialValue">Nilai Awal:</label><br>
+    <input type="text" id="initialValue" inputmode="numeric" pattern="[0-9,.]*"><br><br>
+
+    <label for="percentageIncrease">Persentase Kenaikan/Kerugian (%):</label><br>
+    <input type="text" id="percentageIncrease" inputmode="numeric" pattern="[0-9,.]*"><br><br>
+
+    <button onclick="calculate()">Hitung</button><br><br>
+
+    <div>
+        <label for="totalValue">Total Nilai:</label><br>
+        <input type="text" id="totalValue" readonly>
+    </div>
+
+    <script>
+        function calculate() {
+            var initialValue = parseFloat(document.getElementById("initialValue").value.replace(/\./g, '').replace(/,/g, '.'));
+            var percentageIncrease = parseFloat(document.getElementById("percentageIncrease").value.replace(/\./g, '').replace(/,/g, '.'));
+
+            var totalValue = initialValue + (initialValue * (percentageIncrease / 100));
+
+            document.getElementById("totalValue").value = totalValue.toLocaleString('id-ID');
+        }
+    </script>
+
+</body>
+</html>
